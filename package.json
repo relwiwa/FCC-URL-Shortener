@@ -1,0 +1,27 @@
+{
+  "name": "fcc-url-shortener",
+  "version": "1.0.0",
+  "description": "URL Shortener. A project for FreeCodeCamp's Backend Certification.",
+  "main": "app.js",
+  "engine": {
+    "node": "^4.4.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relwiwa/FCC-URL-Shortener.git"
+  },
+  "author": "Walter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/relwiwa/FCC-URL-Shortener/issues"
+  },
+  "homepage": "https://github.com/relwiwa/FCC-URL-Shortener#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.5"
+  }
+}
