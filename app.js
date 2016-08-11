@@ -2,7 +2,9 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var port = process.env.PORT || 3000;
+var validator = require('validator');
 var mongo = require('./mongo.js');
+var us = require('./url-shortener.js');
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
@@ -22,4 +24,41 @@ mongo.initDB().then(function(db) {
   });
 }, function(err) {
   console.log('Connection to database could not be established', err);
+});
+
+/*  /new/URL route:
+    1. Checks if URL is in proper format.
+    2. If not, sends JSON error object, otherwise checks if URL is
+       already in DB:
+        - if so, returns existing information
+        - if not, created shorter url and returns information */
+app.get('/new/*', function(req, res) {
+  var url = {
+    'originalUrl': req.path.substr(5)
+  };
+  if (validator.isURL(url.originalUrl)) {
+    us.getUrl(url).then(function(result) {
+      if (result !== null) {
+        res.json(result);
+      }
+      else {
+        us.addUrl(url.originalUrl).then(function(result) {
+          res.json(result);
+        }, function(err) {
+          res.json({
+            'error': 'An error happened while trying to create a shorter URL'
+          });
+        });
+      }
+    }, function(err) {
+      res.json({
+        'error': 'An error happened while processing your URL.'
+      });
+    });
+  }
+  else {
+    res.json({
+      'error': 'This was not a proper URL. Please insert URLs in a correct format.'
+    });
+  }
 });
