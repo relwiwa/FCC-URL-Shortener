@@ -36,7 +36,9 @@ app.get('/new/*', function(req, res) {
   var url = {
     'originalUrl': req.path.substr(5)
   };
-  if (validator.isURL(url.originalUrl)) {
+  if (validator.isURL(url.originalUrl, {
+    require_protocol: true
+  })) {
     us.getUrl(url).then(function(result) {
       if (result !== null) {
         res.json(result);
