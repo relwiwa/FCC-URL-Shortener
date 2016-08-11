@@ -69,7 +69,7 @@ function addUrl(url) {
     - Should short url already exist, recursively calls itself */
 function createShortUrl() {
   var promise = new Promise(function(resolve, reject) {
-    var alphabet = "abcdefghijklmnopqrstuvwxyz123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var alphabet = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var shortUrl = "";
     for (var i = 0; i < 8; i++) {
       shortUrl += alphabet[Math.floor(Math.random() * alphabet.length)];

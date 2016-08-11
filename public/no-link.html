@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>URL Shortener Microservice | A Project For FreeCodeCamp's Backend Certification</title>  
+</head>
+<body>
+  <h1>URL Shortener Microservice</h1>
+  <h2 style="background:lightblue">The URL you entered does not exist</h2>
+  <h3>Functionality</h3>
+  <ul>
+    <li> I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</li>
+    <li>If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.</li>
+    <li>When I visit that shortened URL, it will redirect me to my original link.</li>
+  </ul>
+  <h3>Example Adding an URL</h3>
+  <ul>
+    <li><a href="https://relwiwa-url-shortener.herokuapp.com/new/https://www.google.de" alt="Example of an API call">https://relwiwa-url-shortener.herokuapp.com/new/https://www.google.de</a></li>
+  </ul>
+  <h3>Example JSON Output</h3>
+  <ul>
+    <li><code>{"originalUrl": "https://www.google.de", "shortUrl": "https://relwiwa-url-shortener.herokuapp.com/3e52"}</code></li>
+  </ul>
+  <h3>Example Using Redirect</h3>
+  <ul>
+    <li>https://relwiwa-url-shortener.herokuapp.com/3e52 will redirect to https://www.google.de</li>
+  </ul>
+</body>
+</html>
